@@ -2,7 +2,7 @@ import cv2
 import serial
 
 # Initialize UART communication
-ser = serial.Serial('/dev/ttyAMA0', 9600, timeout=1)  # Adjust port and baud rate if necessary
+ser = serial.Serial('/dev/serial0', 9600, timeout=1)  # Adjust port and baud rate if necessary
 ser.flush()
 
 # Load the pre-trained Haar Cascade for face detection
