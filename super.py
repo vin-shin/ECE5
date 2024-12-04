@@ -60,7 +60,7 @@ while True:
     # Display the frame with rectangles
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
-    cv2.imshow('Face Detection', frame)
+    cv2.imwrite('Face Detection', frame)
 
     # Exit loop when 'q' is pressed
     if cv2.waitKey(1) & 0xFF == ord('q'):
