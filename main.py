@@ -5,6 +5,8 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fronta
 
 # Open the USB camera (0 is usually the default camera)
 cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 800)
 
 if not cap.isOpened():
     print("Error: Could not access the camera.")
@@ -20,10 +22,11 @@ while True:
         break
 
     # Convert the frame to grayscale (Haar cascade works on grayscale images)
+    resized_frame = cv2.resize(frame, (320, 240))  # Adjust resolution as needed
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # Detect faces in the frame
-    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.2, minNeighbors=5, minSize=(30, 30))
 
     # Draw rectangles around detected faces and print coordinates
     for (x, y, w, h) in faces:
